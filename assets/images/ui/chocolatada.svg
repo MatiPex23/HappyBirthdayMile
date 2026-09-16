@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" width="160" height="200">
+  <defs>
+    <linearGradient id="chocGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8d5b4c"/>
+      <stop offset="50%" stop-color="#6f3b28"/>
+      <stop offset="100%" stop-color="#4a2214"/>
+    </linearGradient>
+    <linearGradient id="milkCream" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff8f0"/>
+      <stop offset="100%" stop-color="#f5e6d3"/>
+    </linearGradient>
+    <linearGradient id="strawGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <filter id="cuteShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#f43f5e" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Cute floating sparkles around straw -->
+  <path d="M125,20 L128,26 L134,29 L128,32 L125,38 L122,32 L116,29 L122,26 Z" fill="#fde047"/>
+  <path d="M40,30 L42,34 L46,36 L42,38 L40,42 L38,38 L34,36 L38,34 Z" fill="#f472b6"/>
+
+  <!-- Straw sticking out -->
+  <g transform="translate(100, 10) rotate(18)">
+    <rect x="0" y="0" width="14" height="65" rx="4" fill="url(#strawGrad)"/>
+    <!-- Straw stripes -->
+    <path d="M0,15 L14,22 L14,27 L0,20 Z" fill="#e11d48"/>
+    <path d="M0,35 L14,42 L14,47 L0,40 Z" fill="#e11d48"/>
+  </g>
+
+  <!-- Milk Carton Body with Shadow -->
+  <g filter="url(#cuteShadow)">
+    <!-- Top gable fold -->
+    <polygon points="35,65 55,42 105,42 125,65" fill="#fbeee0"/>
+    <polygon points="55,42 80,32 105,42" fill="#edd6bf"/>
+
+    <!-- Main box body -->
+    <rect x="35" y="65" width="90" height="115" rx="14" fill="url(#milkCream)"/>
+    <!-- Chocolate lower half wave -->
+    <path d="M35,110 Q57,100 80,112 T125,110 L125,166 A14,14 0 0,1 111,180 L49,180 A14,14 0 0,1 35,166 Z" fill="url(#chocGrad)"/>
+    <path d="M35,110 Q57,100 80,112 T125,110" stroke="#fbcfe8" stroke-width="3" fill="none"/>
+  </g>
+
+  <!-- Kawaii Face on Carton -->
+  <!-- Cute anime eyes -->
+  <circle cx="62" cy="90" r="5.5" fill="#3b1d11"/>
+  <circle cx="64" cy="88" r="2" fill="#ffffff"/>
+  <circle cx="98" cy="90" r="5.5" fill="#3b1d11"/>
+  <circle cx="100" cy="88" r="2" fill="#ffffff"/>
+  
+  <!-- Rosy cheeks -->
+  <ellipse cx="53" cy="96" rx="6" ry="3.5" fill="#fda4af" opacity="0.8"/>
+  <ellipse cx="107" cy="96" rx="6" ry="3.5" fill="#fda4af" opacity="0.8"/>
+
+  <!-- Smiling mouth -->
+  <path d="M75,93 Q80,98 85,93" stroke="#3b1d11" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+  <!-- Badge in chocolate section: "CHOCO LOVE" -->
+  <rect x="45" y="128" width="70" height="24" rx="8" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <text x="80" y="142" font-family="'Quicksand', sans-serif" font-weight="bold" font-size="9" fill="#fef08a" text-anchor="middle" letter-spacing="1">CHOCOLATADA</text>
+  <text x="80" y="151" font-family="'Quicksand', sans-serif" font-size="7.5" fill="#ffffff" text-anchor="middle">★ 100% AMOR ★</text>
+
+  <!-- Mini heart on bottom right -->
+  <path d="M80,166 C77,162 72,162 72,165 C72,168 80,174 80,174 C80,174 88,168 88,165 C88,162 83,162 80,166 Z" fill="#fb7185"/>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" width="120" height="100">
+  <defs>
+    <radialGradient id="waxGradB" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#ff4d6d"/>
+      <stop offset="40%" stop-color="#c9184a"/>
+      <stop offset="85%" stop-color="#800f2f"/>
+      <stop offset="100%" stop-color="#590d22"/>
+    </radialGradient>
+    <filter id="waxShadowB" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#30030f" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Left Piece broken off and shifted left -->
+  <g filter="url(#waxShadowB)" transform="translate(-8, 2) rotate(-6 40 50)">
+    <path d="M46,10 C32,13 18,22 12,36 C6,50 8,66 18,78 C25,86 35,92 46,92 L47,75 L43,65 L50,55 L42,45 L48,32 L44,20 Z" 
+          fill="url(#waxGradB)"/>
+    <path d="M46,92 L47,75 L43,65 L50,55 L42,45 L48,32 L44,20 L46,10" stroke="#ff8fa3" stroke-width="1.5" fill="none"/>
+    <circle cx="34" cy="50" r="16" fill="none" stroke="#590d22" stroke-width="1.5" opacity="0.6"/>
+  </g>
+
+  <!-- Right Piece broken off and shifted right -->
+  <g filter="url(#waxShadowB)" transform="translate(10, -2) rotate(6 75 50)">
+    <path d="M60,10 C74,9 86,18 92,30 C98,42 98,58 92,72 C86,84 75,93 60,93 L59,75 L63,65 L56,55 L64,45 L58,32 L62,20 Z" 
+          fill="url(#waxGradB)"/>
+    <path d="M60,93 L59,75 L63,65 L56,55 L64,45 L58,32 L62,20 L60,10" stroke="#ff8fa3" stroke-width="1.5" fill="none"/>
+    <circle cx="72" cy="50" r="16" fill="none" stroke="#590d22" stroke-width="1.5" opacity="0.6"/>
+  </g>
+
+  <!-- Crack sparkles / fragments -->
+  <circle cx="53" cy="38" r="2" fill="#ff758f"/>
+  <circle cx="51" cy="62" r="1.5" fill="#ff758f"/>
+  <circle cx="56" cy="78" r="2" fill="#ff758f"/>
+</svg>

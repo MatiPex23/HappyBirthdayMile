@@ -1,0 +1,1436 @@
+/* ==========================================================================
+   STYLE.CSS - Web Interactiva "Sorpresa de Cumpleaños"
+   Liquid Glass (Glassmorphism), Romantic Gothic & Regency Aesthetic
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & CSS Variables
+   -------------------------------------------------------------------------- */
+:root {
+  --bg-dark: #120e15;
+  --bg-darker: #0c080f;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-highlight: rgba(255, 255, 255, 0.22);
+  --glass-blur: 14px;
+  
+  --primary-pink: #f472b6;
+  --primary-rose: #fb7185;
+  --primary-crimson: #c9184a;
+  --primary-gold: #d4af37;
+  --primary-gold-light: #fef08a;
+  
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
+  --text-gold: #fde68a;
+  
+  --font-medieval: 'Cinzel Decorative', 'Cinzel', 'Uncial Antiqua', Georgia, serif;
+  --font-classic: 'Cinzel', Georgia, serif;
+  --font-letters: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-cute: 'Quicksand', 'Nunito', system-ui, -apple-system, sans-serif;
+  
+  --radius-card: 20px;
+  --radius-sm: 12px;
+  --radius-full: 9999px;
+  
+  --shadow-card: 0 10px 35px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+  --shadow-glow-pink: 0 0 25px rgba(244, 114, 182, 0.35);
+  --shadow-glow-gold: 0 0 25px rgba(212, 175, 55, 0.35);
+  
+  --transition-smooth: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Global Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-cute);
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(244, 114, 182, 0.35);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-rose);
+}
+
+/* --------------------------------------------------------------------------
+   3. Canvas & Ambient Background
+   -------------------------------------------------------------------------- */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ambient-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(120px);
+  opacity: 0.15;
+}
+.ambient-glow.glow-1 {
+  top: -100px;
+  left: -100px;
+  background: radial-gradient(circle, #f43f5e 0%, transparent 70%);
+}
+.ambient-glow.glow-2 {
+  bottom: -150px;
+  right: -100px;
+  background: radial-gradient(circle, #d4af37 0%, transparent 70%);
+}
+.ambient-glow.glow-3 {
+  top: 45%;
+  right: 20%;
+  background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+  opacity: 0.1;
+}
+
+/* --------------------------------------------------------------------------
+   4. Liquid Glass Utility
+   -------------------------------------------------------------------------- */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border-highlight), transparent);
+  pointer-events: none;
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.6), 0 0 20px rgba(244, 114, 182, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   5. Phase 1: El Regalo Escurridizo (Runaway Gift Intro)
+   -------------------------------------------------------------------------- */
+#intro-stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s;
+  padding: 20px;
+}
+
+#intro-stage.stage-hidden {
+  opacity: 0;
+  transform: scale(1.08);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  user-select: none;
+}
+
+.intro-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(244, 114, 182, 0.15);
+  border: 1px solid rgba(244, 114, 182, 0.3);
+  color: var(--primary-pink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.intro-title {
+  font-family: var(--font-medieval);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  color: #fff;
+  text-shadow: 0 0 25px rgba(244, 114, 182, 0.5);
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.intro-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto 40px auto;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Gift Box Element */
+.gift-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  cursor: pointer;
+  touch-action: none;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.gift-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: giftBreathe 2.8s ease-in-out infinite;
+}
+
+.gift-container.ready-to-open .gift-box {
+  animation: giftExcited 0.7s ease-in-out infinite, goldPulse 1.5s ease-in-out infinite;
+}
+
+/* Gift SVG / Layered Construction */
+.gift-lid {
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 152px;
+  height: 38px;
+  background: linear-gradient(135deg, #fb7185, #e11d48, #9f1239);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gift-lid::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 100%;
+  background: linear-gradient(180deg, #fef08a, #d4af37);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+/* Bow Ribbons on Lid */
+.gift-bow {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 28px;
+  z-index: 4;
+}
+
+.bow-left, .bow-right {
+  position: absolute;
+  width: 30px;
+  height: 26px;
+  border: 4px solid #fef08a;
+  border-radius: 50% 50% 10% 50%;
+  top: 0;
+  background: linear-gradient(135deg, rgba(254, 240, 138, 0.8), rgba(212, 175, 55, 0.9));
+  box-shadow: 0 0 10px rgba(254, 240, 138, 0.6);
+}
+.bow-left {
+  left: 3px;
+  transform: rotate(-35deg);
+}
+.bow-right {
+  right: 3px;
+  transform: rotate(35deg) scaleX(-1);
+}
+.bow-center {
+  position: absolute;
+  left: 50%;
+  top: 14px;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: #fef08a;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #fef08a;
+}
+
+.gift-body {
+  position: absolute;
+  top: 34px;
+  left: 0;
+  width: 140px;
+  height: 106px;
+  background: linear-gradient(135deg, #f43f5e, #be123c, #881337);
+  border-radius: 0 0 16px 16px;
+  box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gift-ribbon-v {
+  position: absolute;
+  width: 24px;
+  height: 100%;
+  background: linear-gradient(180deg, #fef08a, #d4af37);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+.gift-ribbon-h {
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  background: linear-gradient(90deg, #fef08a, #d4af37);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+.gift-sparkles {
+  position: absolute;
+  inset: -20px;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   6. Phase 2: Main Romantic Dashboard Layout
+   -------------------------------------------------------------------------- */
+#dashboard-stage {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 30px 20px 80px 20px;
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#dashboard-stage.stage-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Section A: Saludo Clásico (Hero Header Card)
+   -------------------------------------------------------------------------- */
+.header-card {
+  padding: 45px 30px;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(ellipse at 50% 0%, rgba(244, 114, 182, 0.12) 0%, rgba(255, 255, 255, 0.03) 70%);
+}
+
+.vintage-corner {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+.vintage-corner.top-left { top: 12px; left: 12px; }
+.vintage-corner.top-right { top: 12px; right: 12px; transform: scaleX(-1); }
+.vintage-corner.bottom-left { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.vintage-corner.bottom-right { bottom: 12px; right: 12px; transform: scale(-1); }
+
+.header-meta {
+  font-family: var(--font-classic);
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--primary-gold-light);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.header-meta::before, .header-meta::after {
+  content: '✦';
+  color: var(--primary-pink);
+  font-size: 0.75rem;
+}
+
+.header-title {
+  font-family: var(--font-medieval);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 10%, #fed7aa 45%, #f472b6 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 30px rgba(244, 114, 182, 0.35);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.header-subtitle {
+  font-family: var(--font-letters);
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  color: #e2e8f0;
+  max-width: 650px;
+  margin: 0 auto;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* --------------------------------------------------------------------------
+   8. Section B: Reproductor de Vinilo (Vinyl Player)
+   -------------------------------------------------------------------------- */
+.player-card {
+  padding: 30px;
+}
+
+.player-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .player-layout {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+  }
+}
+
+/* Left: Turntable Deck */
+.turntable-deck {
+  background: radial-gradient(circle at 35% 35%, #231929 0%, #130a17 100%);
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.1), 0 15px 35px rgba(0, 0, 0, 0.6);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+/* Vinyl Platter */
+.vinyl-platter {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+.vinyl-disc {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, 
+    #0c060e 0%, 
+    #1d1522 15%, 
+    #0b040c 30%, 
+    #1e1423 45%, 
+    #0a030b 60%, 
+    #211527 75%, 
+    #080209 100%);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.08);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.5s ease;
+}
+
+.vinyl-disc.is-spinning {
+  animation: spinVinyl 4s linear infinite;
+}
+
+/* Vinyl Grooves Texture */
+.vinyl-grooves {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    inset 0 0 0 10px rgba(255, 255, 255, 0.02),
+    inset 0 0 0 20px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 32px rgba(255, 255, 255, 0.03),
+    inset 0 0 0 45px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 58px rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+}
+
+/* Center Record Label */
+.vinyl-label {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  border: 2px solid var(--primary-gold);
+  z-index: 2;
+}
+
+.vinyl-label img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vinyl-center-spindle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, #f8fafc 20%, #94a3b8 70%, #475569 100%);
+  border-radius: 50%;
+  z-index: 3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* Turntable Tone Arm */
+.tonearm {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  width: 80px;
+  height: 180px;
+  pointer-events: none;
+  z-index: 10;
+  transform-origin: 55px 25px;
+  transform: rotate(-32deg);
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tonearm.arm-playing {
+  transform: rotate(-2deg);
+}
+
+.tonearm-base {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fef08a, #d4af37, #78350f);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.tonearm-rod {
+  position: absolute;
+  top: 25px;
+  right: 24px;
+  width: 5px;
+  height: 125px;
+  background: linear-gradient(90deg, #e2e8f0, #94a3b8);
+  border-radius: 3px;
+  transform: rotate(8deg);
+  transform-origin: top center;
+}
+
+.tonearm-head {
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+  width: 16px;
+  height: 26px;
+  background: #1e1b2e;
+  border: 1px solid var(--primary-gold);
+  border-radius: 3px;
+  transform: rotate(-24deg);
+}
+
+/* Floating notes container */
+.notes-container {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 160px;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 20;
+}
+
+.floating-note {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-size: 22px;
+  color: var(--primary-pink);
+  text-shadow: 0 0 10px rgba(244, 114, 182, 0.8);
+  animation: floatNote 2.4s ease-out forwards;
+}
+
+/* Right: Playlist & Controls */
+.player-controls-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-classic);
+  font-size: 1.25rem;
+  color: var(--primary-gold-light);
+  letter-spacing: 1px;
+}
+
+.playlist-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.track-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(244, 114, 182, 0.3);
+  transform: translateX(4px);
+}
+
+.track-item.is-active {
+  background: rgba(244, 114, 182, 0.12);
+  border-color: var(--primary-pink);
+  box-shadow: 0 0 18px rgba(244, 114, 182, 0.2);
+}
+
+.track-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.track-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.track-info {
+  flex-grow: 1;
+}
+
+.track-name {
+  font-family: var(--font-classic);
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.track-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.track-play-badge {
+  color: var(--primary-pink);
+  font-size: 1.1rem;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.track-item.is-active .track-play-badge {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Master Player Bar */
+.master-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.progress-bar-container {
+  flex-grow: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary-pink), var(--primary-gold));
+  border-radius: var(--radius-full);
+  transition: width 0.1s linear;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.control-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-ctrl {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.btn-ctrl:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-ctrl.btn-main-play {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary-pink), var(--primary-rose));
+  color: #fff;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+}
+
+.btn-ctrl.btn-main-play:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.6);
+}
+
+.volume-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  outline: none;
+}
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary-pink);
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   9. Section C: Cartas con Sello de Lacre (Wax Seal Letters)
+   -------------------------------------------------------------------------- */
+.letters-card {
+  padding: 35px 30px;
+}
+
+.letters-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .letters-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+/* Vintage Envelope */
+.envelope-item {
+  position: relative;
+  background: linear-gradient(145deg, #271a2e, #180f1d);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px 20px 24px 20px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  user-select: none;
+}
+
+.envelope-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(244, 114, 182, 0.35);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(244, 114, 182, 0.15);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  pointer-events: none;
+}
+
+.wax-seal-btn {
+  width: 82px;
+  height: 82px;
+  margin: 10px auto 16px auto;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.wax-seal-btn:hover {
+  transform: scale(1.08);
+}
+
+.wax-seal-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.6));
+}
+
+.wax-seal-btn .broken-seal {
+  display: none;
+}
+
+.envelope-item.is-opened .wax-seal-btn .intact-seal {
+  display: none;
+}
+.envelope-item.is-opened .wax-seal-btn .broken-seal {
+  display: block;
+}
+
+.envelope-title {
+  font-family: var(--font-classic);
+  font-size: 1.15rem;
+  color: var(--primary-gold-light);
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+.envelope-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.envelope-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(244, 114, 182, 0.15);
+  color: var(--primary-pink);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   10. Papyrus Modal View (Papiro Pergamino Clásico)
+   -------------------------------------------------------------------------- */
+.papyrus-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 5, 14, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.papyrus-modal.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.papyrus-scroll-container {
+  position: relative;
+  max-width: 680px;
+  width: 100%;
+  max-height: 85vh;
+  background-color: #faf3e0;
+  background-image: url('../assets/images/textures/parchment.svg');
+  background-size: cover;
+  border-radius: 12px;
+  padding: 45px 35px 35px 35px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.25);
+  border: 1px solid #d4af37;
+  overflow-y: auto;
+  color: #2b1b17;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.papyrus-modal.is-active .papyrus-scroll-container {
+  transform: scale(1) translateY(0);
+}
+
+/* Papyrus custom scrollbar */
+.papyrus-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+.papyrus-scroll-container::-webkit-scrollbar-track {
+  background: rgba(160, 120, 80, 0.15);
+  border-radius: 10px;
+}
+.papyrus-scroll-container::-webkit-scrollbar-thumb {
+  background: #a47148;
+  border-radius: 10px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #5c3826;
+  border: 1px solid #d4af37;
+  color: #fef08a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: var(--transition-smooth);
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background: #c9184a;
+  transform: scale(1.1);
+}
+
+.papyrus-header {
+  text-align: center;
+  border-bottom: 2px solid rgba(164, 113, 72, 0.3);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.papyrus-seal-icon {
+  width: 45px;
+  height: 45px;
+  margin: 0 auto 8px auto;
+  opacity: 0.9;
+}
+
+.papyrus-title {
+  font-family: var(--font-classic);
+  font-size: 1.6rem;
+  color: #5c2c16;
+  letter-spacing: 1px;
+}
+
+.papyrus-date {
+  font-family: var(--font-letters);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #8c5836;
+}
+
+.papyrus-body {
+  font-family: var(--font-letters);
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #2b1b17;
+  text-align: justify;
+}
+
+.papyrus-body p {
+  margin-bottom: 16px;
+  text-indent: 1.5em;
+}
+
+.papyrus-signature {
+  margin-top: 30px;
+  text-align: right;
+  font-family: var(--font-classic);
+  font-size: 1.1rem;
+  color: #633219;
+  border-top: 1px dashed rgba(164, 113, 72, 0.3);
+  padding-top: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   11. Section D: El Viaje (Lima a Huánuco)
+   -------------------------------------------------------------------------- */
+.travel-card {
+  padding: 35px 30px;
+  position: relative;
+}
+
+.travel-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.travel-title {
+  font-family: var(--font-classic);
+  font-size: 1.4rem;
+  color: var(--primary-gold-light);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.travel-map-container {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.city-node {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.city-icon {
+  width: 68px;
+  height: 68px;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.city-node:hover .city-icon {
+  transform: scale(1.1);
+}
+
+.city-name {
+  font-family: var(--font-classic);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.city-node.lima .city-name { color: #7dd3fc; }
+.city-node.huanuco .city-name { color: #fda4af; }
+
+/* SVG Route Track */
+.route-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Traveling Heart Letter */
+.traveling-letter {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 0 15px rgba(244, 114, 182, 0.8), 0 4px 10px rgba(0, 0, 0, 0.4);
+  z-index: 4;
+  offset-path: path("M 80,100 Q 400,20 720,100");
+  animation: travelAlongPath 7s ease-in-out infinite alternate;
+}
+
+@keyframes travelAlongPath {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.travel-quote-wrap {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.travel-quote {
+  font-family: var(--font-letters);
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  font-style: italic;
+  color: var(--primary-pink);
+  letter-spacing: 0.5px;
+}
+
+.travel-subtext {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   12. Section E: Micro-interacciones (Easter Eggs Cute)
+   -------------------------------------------------------------------------- */
+.cute-dock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.easter-egg-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: var(--transition-smooth);
+}
+
+.easter-egg-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(244, 114, 182, 0.3);
+}
+
+.egg-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.easter-egg-item:hover .egg-icon {
+  transform: scale(1.15);
+}
+
+.egg-icon.is-popping {
+  animation: chocoPop 0.6s ease forwards;
+}
+
+.egg-meta h4 {
+  font-family: var(--font-classic);
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.egg-meta p {
+  font-size: 0.78rem;
+  color: var(--primary-pink);
+}
+
+/* --------------------------------------------------------------------------
+   13. Section F: Generador de Frases (Orgullo y Prejuicio) & Floating Action
+   -------------------------------------------------------------------------- */
+.floating-quote-fab {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(244, 114, 182, 0.25));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(254, 240, 138, 0.4);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.floating-quote-fab:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(244, 114, 182, 0.4);
+  border-color: var(--primary-gold-light);
+}
+
+.fab-icon {
+  font-size: 1.3rem;
+  color: var(--primary-gold-light);
+}
+
+.fab-text {
+  font-family: var(--font-classic);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* Glass Toast for Pride & Prejudice Quote */
+.quote-toast {
+  position: fixed;
+  bottom: 90px;
+  right: 25px;
+  max-width: 420px;
+  width: calc(100vw - 50px);
+  background: rgba(22, 14, 28, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 18px;
+  padding: 22px 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.2);
+  z-index: 950;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quote-toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.quote-toast-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.quote-source-badge {
+  font-family: var(--font-classic);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-gold-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toast-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+.toast-close-btn:hover {
+  color: #fff;
+}
+
+.quote-toast-text {
+  font-family: var(--font-letters);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: #f1f5f9;
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.quote-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-next-quote {
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--primary-gold-light);
+  font-family: var(--font-classic);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-next-quote:hover {
+  background: rgba(212, 175, 55, 0.3);
+  color: #fff;
+}
+
+.quote-author {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+/* --------------------------------------------------------------------------
+   14. Star / Heart Sparkles Particle Canvas
+   -------------------------------------------------------------------------- */
+.sparkle-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* --------------------------------------------------------------------------
+   15. Mobile & Small Screen Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  #dashboard-stage {
+    padding: 20px 14px 100px 14px;
+  }
+  
+  .header-card {
+    padding: 35px 16px;
+  }
+  
+  .player-card, .letters-card, .travel-card {
+    padding: 22px 16px;
+  }
+  
+  .travel-map-container {
+    padding: 0 10px;
+    height: 140px;
+  }
+  
+  .city-icon {
+    width: 52px;
+    height: 52px;
+  }
+  
+  .floating-quote-fab {
+    bottom: 18px;
+    right: 18px;
+    padding: 10px 16px;
+  }
+  
+  .quote-toast {
+    right: 15px;
+    bottom: 75px;
+    width: calc(100vw - 30px);
+  }
+  
+  .papyrus-scroll-container {
+    padding: 35px 20px 25px 20px;
+  }
+  
+  .turntable-deck {
+    min-height: 280px;
+  }
+  .vinyl-platter {
+    width: 210px;
+    height: 210px;
+  }
+}

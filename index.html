@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Una experiencia web interactiva, mágica y romántica para celebrar un cumpleaños inolvidable con estilo Liquid Glass y tocadiscos de vinilo.">
+  <title>¡Feliz Cumpleaños! ♥ Una Sorpresa Especial</title>
+
+  <!-- Google Fonts: Medieval/Clásico, Caligrafía y Sans-serif Redondeada -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Quicksand:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Estilos y Animaciones -->
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Lienzo de Fondo de Partículas (Corazones, Pétalos, Estrellas) -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Luces Atmosféricas Difusas -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- =========================================================================
+       FASE 1: Pantalla de Inicio (El Regalo Escurridizo)
+       ========================================================================= -->
+  <main id="intro-stage" role="region" aria-label="Pantalla de apertura del regalo">
+    <div class="intro-content">
+      <div class="intro-tag">
+        <span>★</span> Una Sorpresa Para Ti <span>★</span>
+      </div>
+      <h1 class="intro-title">Intenta abrir tu sorpresa</h1>
+      <p id="gift-subtitle" class="intro-subtitle">
+        ¡Intenta abrir tu sorpresa! Pasa el cursor o toca la cajita de regalo...
+      </p>
+
+      <!-- Caja de Regalo Escurridiza -->
+      <div id="gift-container" class="gift-container" role="button" tabindex="0"
+        aria-label="Caja de regalo interactiva">
+        <div class="gift-box">
+          <!-- Tapa con Lazo -->
+          <div class="gift-lid">
+            <div class="gift-bow">
+              <div class="bow-left"></div>
+              <div class="bow-right"></div>
+              <div class="bow-center"></div>
+            </div>
+          </div>
+          <!-- Cuerpo de la caja -->
+          <div class="gift-body">
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       FASE 2: Dashboard Principal (Grid Romántico Liquid Glass)
+       ========================================================================= -->
+  <div id="dashboard-stage">
+    <div class="dashboard-grid">
+
+      <!-- SECCIÓN A: Saludo Clásico (Hero Header Card) -->
+      <header class="glass-card header-card" id="header-section">
+        <!-- Esquinas Ornamentadas Vintage Estilo Medieval -->
+        <img src="assets/images/ui/vintage-corner.svg" alt="Ornamento" class="vintage-corner top-left">
+        <img src="assets/images/ui/vintage-corner.svg" alt="Ornamento" class="vintage-corner top-right">
+        <img src="assets/images/ui/vintage-corner.svg" alt="Ornamento" class="vintage-corner bottom-left">
+        <img src="assets/images/ui/vintage-corner.svg" alt="Ornamento" class="vintage-corner bottom-right">
+
+        <div class="header-meta">Mile, te quiero y te deseo un...</div>
+        <h1 class="header-title">¡Feliz Cumpleaños!</h1>
+        <p class="header-subtitle">
+          "Ha hechizado usted mi cuerpo y mi alma, y la amo... jeje Hoy celebro tu día, con ternura y espero recuerdes
+          cada instante que compartimos juntos como algo bonito :3 ."
+        </p>
+      </header>
+
+      <!-- SECCIÓN B: Reproductor de Vinilo Romántico -->
+      <section class="glass-card player-card" id="vinyl-section" aria-label="Reproductor de Vinilo">
+        <div class="player-layout">
+
+          <!-- Columna Izquierda: Tocadiscos Clásico -->
+          <div class="turntable-deck" id="turntable-deck">
+            <!-- Plato y Vinilo Giratorio -->
+            <div class="vinyl-platter">
+              <div id="vinyl-disc" class="vinyl-disc">
+                <div class="vinyl-grooves"></div>
+                <div class="vinyl-label">
+                  <img id="vinyl-center-img" src="assets/images/covers/cover1.svg" alt="Carátula de Vinilo">
+                </div>
+                <div class="vinyl-center-spindle"></div>
+              </div>
+            </div>
+
+            <!-- Brazo Fonocaptor (Tonearm) -->
+            <div id="turntable-arm" class="tonearm">
+              <div class="tonearm-base"></div>
+              <div class="tonearm-rod"></div>
+              <div class="tonearm-head"></div>
+            </div>
+
+            <!-- Contenedor de Notas Musicales Flotantes -->
+            <div id="floating-notes-box" class="notes-container" aria-hidden="true"></div>
+          </div>
+
+          <!-- Columna Derecha: Playlist y Controles Maestros -->
+          <div class="player-controls-panel">
+            <div class="section-label">
+              <span>𝄞</span> Colección de Melodías
+            </div>
+
+            <!-- Lista de Discos de Vinilo -->
+            <div class="playlist-tracks">
+              <!-- Pista 1 -->
+              <div class="track-item is-active" data-index="0">
+                <div class="track-thumb">
+                  <img src="assets/images/covers/cover1.svg" alt="Canción Nuestra">
+                </div>
+                <div class="track-info">
+                  <div class="track-name">Te</div>
+                  <div class="track-desc">Se que te gusta, te ayuda emocionalmente :3</div>
+                </div>
+                <div class="track-play-badge">▶</div>
+              </div>
+
+              <!-- Pista 2 -->
+              <div class="track-item" data-index="1">
+                <div class="track-thumb">
+                  <img src="assets/images/covers/cover2.svg" alt="Noche en la Distancia">
+                </div>
+                <div class="track-info">
+                  <div class="track-name">Quiero</div>
+                  <div class="track-desc">Eres mi persona favorita</div>
+                </div>
+                <div class="track-play-badge">▶</div>
+              </div>
+
+              <!-- Pista 3 -->
+              <div class="track-item" data-index="2">
+                <div class="track-thumb">
+                  <img src="assets/images/covers/cover3.svg" alt="Orgullo y Prejuicio">
+                </div>
+                <div class="track-info">
+                  <div class="track-name">Mucho</div>
+                  <div class="track-desc"> ❤️ "Me gustas" ❤️ </div>
+                </div>
+                <div class="track-play-badge">▶</div>
+              </div>
+            </div>
+
+            <!-- Barra de Progreso y Botones de Reproducción -->
+            <div class="master-controls">
+              <div class="progress-wrap">
+                <span id="player-time-current">0:00</span>
+                <div id="progress-bar-wrap" class="progress-bar-container">
+                  <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                </div>
+                <span id="player-time-total">0:00</span>
+              </div>
+
+              <div class="controls-row">
+                <div class="control-buttons">
+                  <button id="btn-prev-track" class="btn-ctrl" title="Canción anterior"
+                    aria-label="Canción anterior">⏮</button>
+                  <button id="btn-play-toggle" class="btn-ctrl btn-main-play" title="Reproducir o Pausar"
+                    aria-label="Reproducir o Pausar">▶</button>
+                  <button id="btn-next-track" class="btn-ctrl" title="Siguiente canción"
+                    aria-label="Siguiente canción">⏭</button>
+                </div>
+
+                <div class="volume-ctrl">
+                  <span>🔊</span>
+                  <input id="volume-slider" class="volume-slider" type="range" min="0" max="1" step="0.05" value="0.8"
+                    aria-label="Volumen">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN C: Cartas con Sello de Lacre -->
+      <section class="glass-card letters-card" id="letters-section" aria-label="Cartas con Sello de Lacre">
+        <div class="section-label">
+          <span>✉</span> Cartas para ti :,
+        </div>
+
+        <div class="letters-grid">
+          <!-- Sobre 1 -->
+          <article class="envelope-item" data-letter="carta1" role="button" tabindex="0" aria-label="Abrir Carta 1">
+            <div class="envelope-flap"></div>
+            <div class="wax-seal-btn">
+              <img class="intact-seal" src="assets/images/ui/wax-seal.svg" alt="Sello de Lacre Rojo">
+              <img class="broken-seal" src="assets/images/ui/wax-broken.svg" alt="Sello Roto">
+            </div>
+            <h3 class="envelope-title">Te deseo un...</h3>
+            <p class="envelope-hint">Espero la pases super lindo, Mile...</p>
+            <span class="envelope-tag">Toca para romper el lacre</span>
+          </article>
+
+          <!-- Sobre 2 -->
+          <article class="envelope-item" data-letter="carta2" role="button" tabindex="0" aria-label="Abrir Carta 2">
+            <div class="envelope-flap"></div>
+            <div class="wax-seal-btn">
+              <img class="intact-seal" src="assets/images/ui/wax-seal.svg" alt="Sello de Lacre Rojo">
+              <img class="broken-seal" src="assets/images/ui/wax-broken.svg" alt="Sello Roto">
+            </div>
+            <h3 class="envelope-title">Te quiero muchom</h3>
+            <p class="envelope-hint">Espero pases un super día, feliz cumpleaños :3</p>
+            <span class="envelope-tag">Toca para romper el lacre</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- SECCIÓN D: El Viaje (Lima a Huánuco) -->
+      <section class="glass-card travel-card" id="travel-section" aria-label="Ruta Lima a Huánuco">
+        <div class="travel-header">
+          <div class="section-label" style="justify-content: center;">
+            <span>✈</span> El Hilo Rojo
+          </div>
+          <p class="travel-title">Con un solo destino...</p>
+        </div>
+
+        <div id="travel-map-box" class="travel-map-container">
+          <!-- Ciudad 1: Lima (Izquierda) -->
+          <div id="node-lima" class="city-node lima">
+            <img src="assets/images/ui/lima.svg" alt="Lima Costa" class="city-icon">
+            <span class="city-name">Lima</span>
+          </div>
+
+          <!-- SVG Curva Punteada -->
+          <svg class="route-svg" viewBox="0 0 800 170" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="50%" stop-color="#f472b6" />
+                <stop offset="100%" stop-color="#fb7185" />
+              </linearGradient>
+            </defs>
+            <path id="travel-route-path" d="M 80,100 Q 400,20 720,100" fill="none" stroke="url(#routeGrad)"
+              stroke-width="3" stroke-dasharray="8 6" stroke-linecap="round" />
+          </svg>
+
+          <!-- Sobre que Viaja Continuamente a lo Largo de la Ruta -->
+          <div id="traveling-letter-icon" class="traveling-letter" title="Viajando con amor">
+            💌
+          </div>
+
+          <!-- Ciudad 2: Huánuco (Derecha) -->
+          <div id="node-huanuco" class="city-node huanuco">
+            <img src="assets/images/ui/huanuco.svg" alt="Huánuco Sierra" class="city-icon">
+            <span class="city-name">Huánuco</span>
+          </div>
+        </div>
+
+        <div class="travel-quote-wrap">
+          <p class="travel-quote">"La distancia nunca es un obstáculo, para quererte cada día"</p>
+          <p class="travel-subtext">Y nunca lo será, yo se que el tiempo sera el responsable de juntarnos...
+        </div>
+      </section>
+
+      <!-- SECCIÓN E: Micro-interacciones (Easter Eggs Cute) -->
+      <section class="glass-card cute-dock" id="easter-eggs-section" aria-label="Detalles Cute">
+        <!-- Chocolatadita 1 -->
+        <div class="easter-egg-item chocolatada-egg" role="button" tabindex="0" title="¡Toca para dar un sorbo!">
+          <img src="assets/images/ui/chocolatada.svg" alt="Cajita de chocolatada" class="egg-icon">
+          <div class="egg-meta">
+            <h4>Unam chocolatadita</h4>
+            <p>¡Tócame para un pop de ternura!</p>
+          </div>
+        </div>
+
+        <!-- Osito con Corazón -->
+        <div class="easter-egg-item teddy-egg" role="button" tabindex="0" title="¡Toca para un abrazo de oso!">
+          <img src="assets/images/ui/teddy.svg" alt="Osito de peluche" class="egg-icon">
+          <div class="egg-meta">
+            <h4>Te deseo un feliz cumpleaños</h4>
+            <p>Un abrazo gigante a la distancia</p>
+          </div>
+        </div>
+
+        <!-- Chocolatadita 2 -->
+        <div class="easter-egg-item chocolatada-egg" role="button" tabindex="0" title="¡Toca para otro sorbo!">
+          <img src="assets/images/ui/chocolatada.svg" alt="Cajita de chocolatada" class="egg-icon">
+          <div class="egg-meta">
+            <h4>Te quiero, demasiado</h4>
+            <p>100% Amor concentrado</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SECCIÓN F: Botón Flotante & Toast de Frases (Orgullo y Prejuicio)
+       ========================================================================= -->
+  <button id="fab-quote-btn" class="floating-quote-fab" aria-label="Ver frases de Orgullo y Prejuicio">
+    <span class="fab-icon">📖</span>
+    <span class="fab-text">Miram</span>
+  </button>
+
+  <div id="quote-toast" class="quote-toast" role="dialog" aria-modal="false" aria-label="Cita romántica">
+    <div class="quote-toast-header">
+      <span class="quote-source-badge">
+        <span>✦</span> From me
+      </span>
+      <button id="toast-quote-close" class="toast-close-btn" aria-label="Cerrar cita">✕</button>
+    </div>
+    <div id="toast-quote-text" class="quote-toast-text">
+      "Ha hechizado usted mi cuerpo y mi alma, y la amo... jeje, la amo, la amo."
+    </div>
+    <div class="quote-actions">
+      <span id="toast-quote-author" class="quote-author">— Mr. Darcy</span>
+      <button id="btn-next-quote" class="btn-next-quote">Otra Frase ❦</button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL DE PAPIRO PERGAMINO (Para la lectura de cartas)
+       ========================================================================= -->
+  <div id="papyrus-modal" class="papyrus-modal" role="dialog" aria-modal="true" aria-label="Lectura de Carta">
+    <div class="papyrus-scroll-container">
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Cerrar pergamino">✕</button>
+
+      <div class="papyrus-header">
+        <img src="assets/images/ui/wax-seal.svg" alt="Sello de cera" class="papyrus-seal-icon">
+        <h2 id="papyrus-letter-title" class="papyrus-title">Título de la Carta</h2>
+        <div id="papyrus-letter-date" class="papyrus-date">Fecha especial</div>
+      </div>
+
+      <div id="papyrus-letter-body" class="papyrus-body">
+        <!-- El contenido se inyecta dinámicamente desde letters.js -->
+      </div>
+
+      <div id="papyrus-letter-sig" class="papyrus-signature">
+        Con todo mi corazón ♥
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio auxiliar oculto para efecto Pop -->
+  <audio id="audio-pop-effect" src="assets/audio/pop.mp3" preload="auto"></audio>
+
+  <!-- Scripts del Proyecto -->
+  <script src="js/player.js"></script>
+  <script src="js/letters.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

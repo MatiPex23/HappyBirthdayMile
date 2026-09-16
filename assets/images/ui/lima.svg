@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="limaPinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pin background circular glow -->
+  <circle cx="60" cy="55" r="46" fill="rgba(56, 189, 248, 0.15)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1.5"/>
+
+  <!-- Coast waves silhouette -->
+  <path d="M25,68 Q40,60 55,68 T85,68 T100,66 L100,85 L25,85 Z" fill="url(#seaGrad)" opacity="0.6"/>
+  <path d="M20,74 Q35,68 50,74 T80,74 T100,72 L100,85 L20,85 Z" fill="url(#seaGrad)" opacity="0.9"/>
+  <!-- Foam accents -->
+  <path d="M25,73 Q37,67 50,73" stroke="#e0f2fe" stroke-width="1.5" fill="none"/>
+  <path d="M55,73 Q68,67 80,73" stroke="#e0f2fe" stroke-width="1.5" fill="none"/>
+
+  <!-- Coastal Sunset / Sun -->
+  <circle cx="60" cy="46" r="14" fill="#fde047" opacity="0.85"/>
+
+  <!-- Romantic Location Pin Marker -->
+  <g transform="translate(60, 48)">
+    <path d="M0,0 C-12,-18 -16,-28 -16,-36 C-16,-46 -8,-54 0,-54 C8,-54 16,-46 16,-36 C16,-28 12,-18 0,0 Z" fill="url(#limaPinGrad)"/>
+    <circle cx="0" cy="-36" r="7" fill="#ffffff"/>
+    <!-- Heart in pin -->
+    <path d="M0,-32 C-2,-35 -5,-35 -5,-37 C-5,-39 -3,-40 0,-38 C3,-40 5,-39 5,-37 C5,-35 2,-35 0,-32 Z" fill="#0284c7"/>
+  </g>
+
+  <!-- Label text -->
+  <text x="60" y="105" font-family="'Quicksand', sans-serif" font-weight="bold" font-size="13" fill="#bae6fd" text-anchor="middle" letter-spacing="1">LIMA</text>
+  <text x="60" y="117" font-family="'Quicksand', sans-serif" font-size="9" fill="#7dd3fc" text-anchor="middle">Costa • Origen</text>
+</svg>

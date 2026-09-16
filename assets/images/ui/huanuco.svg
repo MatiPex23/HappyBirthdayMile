@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="huanucoPinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pin background circular glow -->
+  <circle cx="60" cy="55" r="46" fill="rgba(244, 63, 94, 0.15)" stroke="rgba(244, 63, 94, 0.4)" stroke-width="1.5"/>
+
+  <!-- Andean Mountain Peaks silhouette -->
+  <path d="M15,85 L35,58 L52,72 L70,52 L88,70 L105,85 Z" fill="url(#mountainGrad)" opacity="0.6"/>
+  <path d="M25,85 L45,64 L65,80 L80,60 L100,85 Z" fill="url(#mountainGrad)" opacity="0.9"/>
+  <!-- Mountain snowy / highlights -->
+  <polygon points="45,64 42,70 48,70" fill="#f0fdf4"/>
+  <polygon points="80,60 76,66 84,66" fill="#f0fdf4"/>
+
+  <!-- Warm Sun behind peaks -->
+  <circle cx="60" cy="42" r="13" fill="#fbbf24" opacity="0.85"/>
+
+  <!-- Romantic Location Pin Marker -->
+  <g transform="translate(60, 48)">
+    <path d="M0,0 C-12,-18 -16,-28 -16,-36 C-16,-46 -8,-54 0,-54 C8,-54 16,-46 16,-36 C16,-28 12,-18 0,0 Z" fill="url(#huanucoPinGrad)"/>
+    <circle cx="0" cy="-36" r="7" fill="#ffffff"/>
+    <!-- Heart in pin -->
+    <path d="M0,-32 C-2,-35 -5,-35 -5,-37 C-5,-39 -3,-40 0,-38 C3,-40 5,-39 5,-37 C5,-35 2,-35 0,-32 Z" fill="#e11d48"/>
+  </g>
+
+  <!-- Label text -->
+  <text x="60" y="105" font-family="'Quicksand', sans-serif" font-weight="bold" font-size="13" fill="#fecdd3" text-anchor="middle" letter-spacing="1">HUÁNUCO</text>
+  <text x="60" y="117" font-family="'Quicksand', sans-serif" font-size="9" fill="#fda4af" text-anchor="middle">Sierra • Destino</text>
+</svg>

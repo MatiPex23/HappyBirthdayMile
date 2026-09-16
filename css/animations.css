@@ -1,0 +1,185 @@
+/* ==========================================================================
+   ANIMATIONS.CSS - High Performance 60fps Keyframes & Micro-interactions
+   ========================================================================== */
+
+/* 1. Gift Box Breathing / Heartbeat (Phase 1) */
+@keyframes giftBreathe {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 10px 25px rgba(244, 63, 94, 0.35));
+  }
+  50% {
+    transform: scale(1.06);
+    filter: drop-shadow(0 15px 35px rgba(244, 63, 94, 0.65));
+  }
+}
+
+@keyframes giftExcited {
+  0%, 100% { transform: scale(1.05) rotate(0deg); }
+  20% { transform: scale(1.08) rotate(-4deg); }
+  40% { transform: scale(1.08) rotate(4deg); }
+  60% { transform: scale(1.1) rotate(-3deg); }
+  80% { transform: scale(1.1) rotate(3deg); }
+}
+
+@keyframes giftOpenLid {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  40% { transform: translateY(-30px) rotate(-15deg); opacity: 1; }
+  100% { transform: translateY(-120px) rotate(-35deg) scale(0.8); opacity: 0; }
+}
+
+/* 2. Vinyl Rotation (Phase 2 - Section B) */
+@keyframes spinVinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 3. Musical Notes Floating from Turntable Needle */
+@keyframes floatNote {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--note-x, 20px), -120px) scale(1.3) rotate(var(--note-rot, 25deg));
+  }
+}
+
+/* 4. Ambient Floating Elements (Particles, Hearts, Teddy Bears) */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes floatBear {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-6px) rotate(-3deg);
+  }
+  70% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+/* 5. Chocolatadita Interactive Pop Bounce */
+@keyframes chocoPop {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.32) rotate(-8deg);
+  }
+  60% {
+    transform: scale(0.92) rotate(4deg);
+  }
+  80% {
+    transform: scale(1.08) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* 6. Sparkle / Glitter Burst */
+@keyframes sparkleBurst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(1.4);
+  }
+}
+
+/* 7. Wax Seal Crack & Break */
+@keyframes waxBreakLeft {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  50% { transform: translate(-12px, -6px) rotate(-15deg); opacity: 0.9; }
+  100% { transform: translate(-20px, 15px) rotate(-25deg); opacity: 0; }
+}
+
+@keyframes waxBreakRight {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  50% { transform: translate(12px, -6px) rotate(15deg); opacity: 0.9; }
+  100% { transform: translate(20px, 15px) rotate(25deg); opacity: 0; }
+}
+
+/* 8. Envelope Flap Opening */
+@keyframes flapOpen {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+}
+
+/* 9. Papyrus Letter Unfurl */
+@keyframes letterUnfurl {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 10. Glowing Aura Pulse */
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.45);
+  }
+}
+
+/* 11. Modal Fade in / Scale */
+@keyframes modalAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes backdropFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 12. Toast Fly-up & Fade */
+@keyframes toastSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

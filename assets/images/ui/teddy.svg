@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <linearGradient id="bearFur" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d99f7d"/>
+      <stop offset="50%" stop-color="#bf7d58"/>
+      <stop offset="100%" stop-color="#9a5a36"/>
+    </linearGradient>
+    <linearGradient id="bearInner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5d6c6"/>
+      <stop offset="100%" stop-color="#e8b89e"/>
+    </linearGradient>
+    <linearGradient id="heartPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff758c"/>
+      <stop offset="100%" stop-color="#ff4b6e"/>
+    </linearGradient>
+    <filter id="glowPink" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#ff4b6e" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Ears -->
+  <circle cx="50" cy="45" r="18" fill="url(#bearFur)"/>
+  <circle cx="50" cy="45" r="10" fill="url(#bearInner)"/>
+  <circle cx="110" cy="45" r="18" fill="url(#bearFur)"/>
+  <circle cx="110" cy="45" r="10" fill="url(#bearInner)"/>
+
+  <!-- Body -->
+  <ellipse cx="80" cy="112" rx="36" ry="34" fill="url(#bearFur)"/>
+  <!-- Feet -->
+  <ellipse cx="50" cy="138" rx="14" ry="12" fill="url(#bearFur)"/>
+  <circle cx="50" cy="138" r="7" fill="url(#bearInner)"/>
+  <ellipse cx="110" cy="138" rx="14" ry="12" fill="url(#bearFur)"/>
+  <circle cx="110" cy="138" r="7" fill="url(#bearInner)"/>
+
+  <!-- Head -->
+  <ellipse cx="80" cy="65" rx="38" ry="32" fill="url(#bearFur)"/>
+
+  <!-- Snout -->
+  <ellipse cx="80" cy="72" rx="17" ry="13" fill="url(#bearInner)"/>
+  <ellipse cx="80" cy="66" rx="6" ry="4" fill="#4a2818"/>
+  <path d="M80,70 L80,76 M76,76 Q80,80 84,76" stroke="#4a2818" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+  <!-- Eyes -->
+  <circle cx="66" cy="60" r="4" fill="#2d170b"/>
+  <circle cx="67.5" cy="58.5" r="1.5" fill="#ffffff"/>
+  <circle cx="94" cy="60" r="4" fill="#2d170b"/>
+  <circle cx="95.5" cy="58.5" r="1.5" fill="#ffffff"/>
+
+  <!-- Cheeks -->
+  <circle cx="58" cy="68" r="5" fill="#ff99a8" opacity="0.6"/>
+  <circle cx="102" cy="68" r="5" fill="#ff99a8" opacity="0.6"/>
+
+  <!-- Big Heart Held in Paws -->
+  <g filter="url(#glowPink)">
+    <path d="M80,118 C70,95 48,95 48,110 C48,124 80,142 80,142 C80,142 112,124 112,110 C112,95 90,95 80,118 Z" fill="url(#heartPink)"/>
+    <circle cx="65" cy="108" r="3" fill="#ffffff" opacity="0.4"/>
+  </g>
+
+  <!-- Paws holding the heart -->
+  <ellipse cx="56" cy="108" rx="9" ry="8" transform="rotate(-15 56 108)" fill="url(#bearFur)"/>
+  <ellipse cx="104" cy="108" rx="9" ry="8" transform="rotate(15 104 108)" fill="url(#bearFur)"/>
+</svg>

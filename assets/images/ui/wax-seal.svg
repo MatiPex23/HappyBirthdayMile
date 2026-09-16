@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <radialGradient id="waxGrad" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#ff4d6d"/>
+      <stop offset="40%" stop-color="#c9184a"/>
+      <stop offset="85%" stop-color="#800f2f"/>
+      <stop offset="100%" stop-color="#590d22"/>
+    </radialGradient>
+    <linearGradient id="sealHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="waxShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#30030f" flood-opacity="0.8"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#ff758f" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Irregular molten wax edge -->
+  <g filter="url(#waxShadow)">
+    <path d="M50,8 C65,6 78,14 85,25 C92,36 94,52 89,66 C84,80 72,92 56,93 C40,94 24,87 15,74 C6,61 7,44 14,30 C21,16 35,10 50,8 Z" 
+          fill="url(#waxGrad)"/>
+    <!-- Wax rim ring -->
+    <circle cx="50" cy="50" r="32" fill="none" stroke="#590d22" stroke-width="2.5" opacity="0.6"/>
+    <circle cx="50" cy="50" r="30" fill="none" stroke="#ff758f" stroke-width="1" opacity="0.5"/>
+    <circle cx="50" cy="50" r="28" fill="#800f2f" opacity="0.4"/>
+  </g>
+
+  <!-- Wax crest monogram (Romantic Heart & Crown / Letter) -->
+  <g transform="translate(50, 50) scale(0.85)">
+    <!-- Small vintage crown -->
+    <path d="M-15,-16 L-10,-8 L0,-16 L10,-8 L15,-16 L12,-4 L-12,-4 Z" fill="#ffb3c1" opacity="0.85"/>
+    <circle cx="-15" cy="-16" r="1.5" fill="#fff"/>
+    <circle cx="0" cy="-16" r="1.5" fill="#fff"/>
+    <circle cx="15" cy="-16" r="1.5" fill="#fff"/>
+
+    <!-- Romantic Heart Seal Stamp -->
+    <path d="M0,18 C-18,2 -25,-12 -12,-20 C-4,-24 0,-14 0,-12 C0,-14 4,-24 12,-20 C25,-12 18,2 0,18 Z" 
+          fill="#ff758f" opacity="0.9"/>
+    <path d="M0,14 C-14,1 -20,-9 -10,-16 C-4,-19 0,-11 0,-9 C0,-11 4,-19 10,-16 C20,-9 14,1 0,14 Z" 
+          fill="#590d22" opacity="0.7"/>
+
+    <!-- Inner initials / heart sparkle -->
+    <text x="0" y="3" font-family="'Cinzel', Georgia, serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold" opacity="0.95">♥</text>
+  </g>
+
+  <!-- Top highlight sheen -->
+  <ellipse cx="44" cy="24" rx="16" ry="6" transform="rotate(-20 44 24)" fill="url(#sealHighlight)"/>
+</svg>
