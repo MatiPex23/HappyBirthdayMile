@@ -8,24 +8,24 @@
    ========================================================================== */
 const LETTERS_DATA = {
   carta1: {
-    title: "Nuestro Primer Año y Nuestra Historia",
-    date: "15 de Septiembre • Con todo mi amor",
+    title: "Hoy 16 de Setiembre",
+    date: "Con todo mi amor",
     body: `
-      <p>Por este primer año juntos y los 4 años de historia que nos respaldan...</p>
-      <p>Mirar atrás y ver todo el camino que hemos recorrido me llena el corazón de una gratitud inmensa. Lo que comenzó como una complicidad única se transformó en el amor más sincero, paciente y bonito de mi vida.</p>
-      <p>Gracias por cada risa compartida, por los desvelos hablando de todo y de nada, por apoyarme en cada meta y por convertirte en mi refugio favorito. Cada día a tu lado confirma que las mejores cosas de la vida toman tiempo, paciencia y mucho amor.</p>
-      <p>¡Feliz Cumpleaños! Que la vida te sonría siempre como tú me haces sonreír a mí. Te amo con cada fibra de mi ser.</p>
+      <p>Mile, sé muy bien que no soy un gran escritor o algo parecido, pero quiero dedicarte todo lo que siento. Es algo sincero que sale de mi corazón.</p>
+      <p>Lo primero es desearte un feliz cumpleaños; sinceramente nunca supe qué tanto te agrada celebrarlo, pero para mí es una fecha muy importante y te deseo lo mejor, pequeña.</p>
+      <p>Tantos años conociéndote me hacen desear que pases lo mejor en este día tan especial. Sé que nuestra interacción últimamente ha sido muy poca, pero créeme que esa no es excusa para quererte cada día de mi vida.</p>
+      <p>Sé que el futuro es muy incierto, pero me alegra de todo corazón que te hayas presentado una vez más en mi vida. Pienso mantener mi compromiso de quedarme, sin importar la dificultad que pases, porque sé que tú lo vales, de verdad. Te quiero mucho, y espero que sientas mi cercanía a pesar de la distancia, porque lo que más deseo en el mundo es estar cerca de ti.</p>
     `,
-    signature: "Siempre tuyo ♥"
+    signature: "Te adoro, Mile♥"
   },
   carta2: {
-    title: "Razones por las que te Amo Cada Día Más",
+    title: "Con sinceridad :3",
     date: "Eternamente en mi corazón",
     body: `
-      <p>Si tuviera que enumerar las razones por las que te amo, necesitaría pergaminos infinitos:</p>
-      <p>Te amo por tu ternura inquebrantable, por la dulzura de tu mirada cuando crees que no me doy cuenta, y por la fuerza con la que persigues cada uno de tus sueños.</p>
-      <p>Te amo porque contigo el mundo se siente en paz, porque ni los kilómetros entre Lima y Huánuco han podido restar un solo gramo a la magia de lo que sentimos, y porque a tu lado aprendí el verdadero significado de la lealtad y el cariño.</p>
-      <p>Hoy celebro tu vida, tu luz y la fortuna inmensa de tenerte. Eres mi persona favorita en este mundo.</p>
+      <p>La distancia no borra lo que guarda el alma. Mile, te quiero, y siento que hago esta segunda carta para decirte que te entiendo. Sé que hay días que te pueden pesar mucho y siempre voy a validar tu necesidad de distanciarte.</p>
+      <p>Te extraño, pero eso no quita que reconozca y respete tu espacio. Espero que hoy te sientas muy en paz y tranquila contigo misma.No te sientas obligada a estar al 100% ni te presiones por mí.</p>
+      <p>Ve a tu propio ritmo y ten mucha calma en tu proceso.</p>
+      <pYo voy a seguir aquí, acompañándote en silencio cuando necesites tu espacio, y listo para estar contigo cuando tengas ganas de hablar. Tómate este cumpleaños solo para ti, para descansar y respirar. Te adoro."</p>
     `,
     signature: "Por siempre y para siempre ♥"
   }
@@ -37,27 +37,27 @@ const LETTERS_DATA = {
 const PRIDE_PREJUDICE_QUOTES = [
   {
     quote: "Ha hechizado usted mi cuerpo y mi alma, y la amo... la amo, la amo. Y nunca más quisiera separarme de usted.",
-    author: "Mr. Darcy • Orgullo y Prejuicio"
+    author: " ILoeYou<3"
   },
   {
     quote: "En vano he luchado. No quiero hacerlo más. Mis sentimientos no pueden contenerse. Debe usted permitirme que le diga cuán ardientemente la admiro y la amo.",
-    author: "Mr. Darcy • Jane Austen"
+    author: " ILoeYou<3"
   },
   {
     quote: "Mis afectos y deseos no han cambiado, pero una sola palabra suya me silenciará para siempre.",
-    author: "Mr. Darcy • Jane Austen"
+    author: " ILoeYou<3"
   },
   {
     quote: "La distancia es una nada cuando uno tiene un motivo tan grande.",
-    author: "Jane Austen • Orgullo y Prejuicio"
+    author: " ILoeYou<3"
   },
   {
     quote: "Usted me enseñó una lección: mediante usted aprendí a ser mejor, a valorar cada instante y a entregarlo todo.",
-    author: "Jane Austen • Adaptación Romántica"
+    author: " ILoeYou<3"
   },
   {
     quote: "Hasta este momento, nunca me había conocido a mí mismo... hasta que descubrí lo que significaba amarte.",
-    author: "Jane Austen • Orgullo y Prejuicio"
+    author: " ILoeYou<3"
   }
 ];
 
